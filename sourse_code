@@ -1,0 +1,133 @@
+//FeLix
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Animation_Design</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0px;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
+            overflow-y: hidden;
+        }
+        
+        .wrapper h4 {
+            color: #fff;
+        }
+        
+        .night {
+            width: 1000px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 20px auto;
+            background: url(Drive-Css-assets/assets/Img_1.png);
+            background-repeat: repeat-x;
+            background-size: cover;
+            overflow-x: hidden;
+            box-shadow: 1px 2px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .face_image {
+            display: block;
+            width: 500%;
+            height: 25%;
+            background: url(Drive-Css-assets/assets/Img_02.png);
+            background-repeat: repeat-x;
+            position: absolute;
+            bottom: 0%;
+            left: 0%;
+        }
+        
+        .move_right {
+            animation: moveRight 6s linear infinite;
+        }
+        
+        .car {
+            background: url(Drive-Css-assets/assets/Img_06.png);
+            position: absolute;
+            top: 470px;
+            left: 140px;
+            width: 500%;
+            height: 70px;
+            background-repeat: no-repeat;
+        }
+        
+        .car_move {
+            animation: carMove 1s linear infinite;
+        }
+        
+        .car_flash {
+            background: url(Drive-Css-assets/assets/Img_05.png);
+            position: absolute;
+            top: 470px;
+            left: 140px;
+            width: 500%;
+            height: 70px;
+            background-repeat: no-repeat;
+        }
+        /*animation*/
+        
+        @keyframes moveRight {
+            100% {
+                transform: translateX(-1950px);
+            }
+        }
+        
+        @keyframes carMove {
+            100 {
+                transform: translateY(-1px);
+            }
+            50% {
+                transform: translateY(2px);
+            }
+            0% {
+                transform: translateY(-1px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h4><b>F :</b> turn on/off flash</h4>
+        <h4><b>Enter :</b> turn on/off animation</h4>
+        <div class="night">
+            <div class="face_image"></div>
+            <div class="car"></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $faceImage = $(".face_image");
+        $car = $(".car");
+        $carFlash = $(".car_flash");
+        // image-animation
+        $(document).on("keypress", function(e) {
+            console.log(e.which);
+            if (e.which == 13) {
+                $($faceImage).toggleClass("move_right");
+                $($car).toggleClass("car_move");
+            }
+        });
+        // flash-car
+        $(document).on("keypress", function(e) {
+            if (e.which == 102) {
+                $($car).toggleClass("car_flash");
+            }
+        });
+    });
+</script>
+
+</html>
